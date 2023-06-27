@@ -50,3 +50,22 @@ SELECT * FROM cars WHERE description LIKE "%1/57%" ORDER BY price ASC;
 SELECT * FROM cars WHERE description LIKE "%1/57%" ORDER BY price ASC LIMIT 1, 100;
 
 SELECT * FROM cars WHERE id = 100;
+
+
+CREATE TABLE houses(
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  bedrooms INT NOT NULL,
+  bathrooms DOUBLE NOT NULL,
+  year INT NOT NULL,
+  price DOUBLE NOT NULL DEFAULT 1.00,
+  sqft INT NOT NULL,
+  description VARCHAR(500),
+
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+)  default charset utf8 COMMENT '';
+
+INSERT INTO houses
+(bedrooms, bathrooms, year, price, sqft, description)
+VALUES
+(3, 2, 2023, 200000, 2500, "Kinda looks like a knock-off monster truck, which actually says a lot.");
