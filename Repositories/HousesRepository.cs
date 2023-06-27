@@ -15,7 +15,17 @@ namespace GreagsListSql.Repositories
         _db = db;
     }
 
-
+    internal House CreateHouse(House houseData)
+    {
+    string sql = @"
+    INSERT INTO houses
+    (bedrooms, bathrooms, year, price, sqft, description)
+    VALUES
+    (@bedrooms, @bathrooms, @year, @price, @sqft, @description);
+    SELECT * FROM houses WHERE id = LAST_INSERT_ID();";
+    House house = _db.Query<House>(sql, houseData).FirstOrDefault();
+    return house;
+    }
 
     internal List<House> GetAllHouses()
     {
